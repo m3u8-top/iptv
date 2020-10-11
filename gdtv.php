@@ -1,0 +1,44 @@
+<?php
+$id=$_GET["id"];
+$ids = array(
+"tvs1"=>"http://nclive.grtn.cn/tvs1hd/hd/live.m3u8",//经济科技
+"xwpd"=>"http://nclive.grtn.cn/xwpd/sd/live.m3u8",//新闻频道
+"ggpd"=>"http://nclive.grtn.cn/ggpd/sd/live.m3u8",//公共频道
+"tvs2"=>"http://nclive.grtn.cn/tvs2/sd/live.m3u8",//南方卫视
+"zjpd"=>"http://nclive.grtn.cn/zjpd/sd/live.m3u8",//珠江频道
+"typd"=>"http://nclive.grtn.cn/typd/sd/live.m3u8",//体育频道
+"tvs4"=>"http://nclive.grtn.cn/tvs4/sd/live.m3u8",//影视频道
+"gjpd"=>"http://nclive.grtn.cn/gjpd/sd/live.m3u8",//国际频道
+"fcpd"=>"http://nclive.grtn.cn/fcpd/sd/live.m3u8",//房产频道
+"lnxq"=>"http://nclive.grtn.cn/lnxq/sd/live.m3u8",//岭南戏曲
+"zypd"=>"http://nclive.grtn.cn/4K/sd/live.m3u8",//综艺频道
+"tvs5"=>"http://nclive.grtn.cn/tvs5/sd/live.m3u8",//少儿频道
+"gdws"=>"http://nclive.grtn.cn/gdws/sd/live.m3u8",//广东卫视
+"jjkt"=>"http://nclive.grtn.cn/jjkt/sd/live.m3u8",//嘉佳卡通
+"jypd"=>"http://nclive.grtn.cn/jypd/sd/live.m3u8",//现代教育
+"stzh"=>"http://dslive.grtn.cn/stzh/sd/live.m3u8",//
+"czzh"=>"http://dslive.grtn.cn/czzh/sd/live.m3u8",//潮州综合
+"zhzh"=>"http://dslive.grtn.cn/zhzh/sd/live.m3u8",//珠海综合
+"hzzh"=>"http://dslive.grtn.cn/hzzh/sd/live.m3u8",//惠州综合
+"zjzh"=>"http://dslive.grtn.cn/zjzh/sd/live.m3u8",//湛江综合
+"swzh"=>"http://dslive.grtn.cn/swzh/sd/live.m3u8",//汕尾综合
+"jmzh"=>"http://dslive.grtn.cn/jmzh/sd/live.m3u8",//江门综合
+"jyzh"=>"http://dslive.grtn.cn/jyzh/sd/live.m3u8",//揭阳综合
+"mmzh"=>"http://dslive.grtn.cn/mmzh/sd/live.m3u8",//
+"zqzh"=>"http://dslive.grtn.cn/zqzh/sd/live.m3u8",//肇庆综合
+"ydpd"=>"http://szlive.grtn.cn/ydpd/sd/live.m3u8",//移动频道
+"nfgw"=>"http://szlive.grtn.cn/nfgw/sd/live.m3u8",//南方购物
+"grfpd"=>"http://szlive.grtn.cn/grfpd/sd/live.m3u8",//高尔夫
+"gdwh"=>"https://elive.grtn.cn/live/view.m3u8?auth_key=1602733199-0-0-ceff744c0d861058e290b9505f93ea40",//广东文化
+); 
+    $url="http://live.grtn.cn/drm.php?url=$ids[$id]";
+    $ch=curl_init();
+    curl_setopt($ch,CURLOPT_USERAGENT,'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0; 4399Box.560; .NET4.0C; .NET4.0E)');//设置用户代理
+    curl_setopt($ch,CURLOPT_URL,$url);
+    curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
+    curl_setopt($ch,CURLOPT_CONNECTTIMEOUT,9);
+    $data=curl_exec($ch);
+    curl_close($ch);
+    //echo( $data)
+    header('location:'.urldecode($data));
+?>
